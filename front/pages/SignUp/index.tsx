@@ -1,35 +1,43 @@
 import React, { useState, useCallback } from 'react';
-import { Header, Form, Label, Button, Input } from './styles';
+import { Header, Form, Label, Button, Input, Error, LinkBox } from './styles';
+import { Link } from 'react-router-dom';
+import useInput from '@hooks/useInput';
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [password, setPassword] = useState();
-  const [passwordCheck, setPasswordCheck] = useState();
+  const [email, onChangeEmail, setEmail] = useInput('');
+  const [nickname, onChangeNickname, setNickname] = useInput('');
+  const [password, setPassword] = useState('');
+  const [passwordCheck, setPasswordCheck] = useState('');
+  const [mismatchError, setMimatchError] = useState(false);
 
-  const onChangeEmail = useCallback((e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  }, []);
+  const onChangePassword = useCallback(
+    (e) => {
+      setPassword(e.target.value);
+      setMimatchError(e.target.value !== passwordCheck);
+    },
+    [passwordCheck, setMimatchError],
+  );
 
-  const onChangeNickname = useCallback((e) => {
-    e.preventDefault();
-    setNickname(e.target.value);
-  }, []);
+  const onChangePasswordCheck = useCallback(
+    (e) => {
+      setPasswordCheck(e.target.value);
+      setMimatchError(e.target.value !== password);
+    },
+    [password, setMimatchError],
+  );
 
-  const onChangePassword = useCallback((e) => {
-    e.preventDefault();
-    setPassword(e.target.value);
-  }, []);
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      console.log(email, nickname, password, passwordCheck);
+    },
+    [email, nickname, password, passwordCheck],
+  );
 
-  const onChangePasswordCheck = useCallback((e) => {
-    e.preventDefault();
-    setPasswordCheck(e.target.value);
-  }, []);
   return (
     <div id="container">
       <Header>DKUCIS</Header>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Label id="email-label">
           <span>이메일</span>
           <div>
@@ -60,8 +68,13 @@ const SignUp = () => {
             ></Input>
           </div>
         </Label>
+        {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
+        {!nickname && <Error>닉네임을 입력해주세요</Error>}
         <Button type="submit">회원가입</Button>
       </Form>
+      <LinkBox>
+        <Link to="/login">로그인 하러가기</Link>
+      </LinkBox>
     </div>
   );
 };

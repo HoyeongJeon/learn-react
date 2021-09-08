@@ -21,6 +21,15 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   margin-bottom: 16px;
+  & > span {
+    display: block;
+    text-align: left;
+    padding-bottom: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1.5;
+    font-weight: 700;
+  }
 `;
 
 export const Button = styled.button`
@@ -41,10 +50,43 @@ export const Button = styled.button`
   cursor: pointer;
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  &:hover {
+    background-color: #004898;
+    border: none;
+  }
 `;
 
 export const Input = styled.input`
   border-radius: 4px;
   --saf-0: rgba(var(--sk_foreground_high_solid, 134, 134, 134), 1);
-  border: 1px solid var(--saf-0);
+  border: 1px solid #353b48;
+  box-sizing: border-box;
+  margin: 0 0 20px;
+  width: 100%;
+  color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
+  padding: 12px;
+  height: 44px;
+  padding-top: 11px;
+  padding-bottom: 13px;
+  font-size: 18px;
+  line-height: 1.5;
+  &:focus {
+    box-shadow: 0 0 0 1px #3392f9, 0 0 0 5px rgba(29, 155, 209, 0.3);
+  }
+`;
+
+export const Error = styled.span`
+  color: #cd616a;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const LinkBox = styled.div`
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  & > a:hover {
+    color: #004898;
+  }
 `;
