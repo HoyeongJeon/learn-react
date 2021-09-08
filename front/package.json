@@ -4,21 +4,52 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --env development",
+    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jun",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@loadable/component": "^5.15.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "antd": "^4.16.13",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "typescript": "^4.4.2"
+    "react-refresh": "^0.9.0",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "style-loader": "^3.2.1",
+    "styled-components": "^5.3.1",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2",
+    "url-polyfill": "^1.1.12",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/loadable__component": "^5.13.4",
+    "@types/node": "^16.7.13",
+    "@types/react-router": "^5.1.16",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/styled-components": "^5.1.14",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-dev-server": "^3.11.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.3.2"
+    "fork-ts-checker-webpack-plugin": "^6.3.3",
+    "prettier": "^2.3.2",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
